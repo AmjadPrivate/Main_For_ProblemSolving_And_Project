@@ -1,5 +1,13 @@
-#include <iostream>
+/*
 
+
+    --> Print Multiplication Table Form 1 To 10.
+
+
+*/
+
+
+#include <iostream>
 
 using namespace std;
 
