@@ -17,7 +17,6 @@ int ReadPositiveNumber(string Message)
 
     int Number = 0;
 
-
     do
     {
         cout << Message << endl;
@@ -54,12 +53,12 @@ enPerfectNumberOrNot IsPerfectNumberOrNot(int Number)
 
 void PrintResult(int Number)
 {
+    cout << endl;
     
-
     if(IsPerfectNumberOrNot(Number) == enPerfectNumberOrNot::Perfect)
-        cout <<  Number << "Is Perfect" << endl;
+        cout <<  Number << " Is Perfect Number" << endl;
     else 
-        cout <<  Number << "Is Not Perfect" << endl;
+        cout <<  Number << " Is Not Perfect Number" << endl;
 
 
 }
