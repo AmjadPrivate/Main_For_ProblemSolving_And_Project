@@ -3,28 +3,27 @@
 using namespace std;
 
 
+int ReadPositiveNumber(string Message)
+{
+
+    int Number = 0;
+
+
+    do
+    {
+        cout << Message << endl;
+        cin >> Number;
+    }
+    while (Number <= 0);
+    
+    
+    return Number;
+}
+
+
 int main()
 {
-    int Number = 0;
-    cout << "enter a number? " << endl;
-    cin >> Number;
 
-
-
-    int  Remiander = 0;
-
-    while (Number != 0)
-    {
-        Remiander = Remiander * 10 + Number % 10;
-
-        Number = Number / 10;
-
-        
-
-
-    }
-        cout << Remiander << endl;
-    
 
 
 

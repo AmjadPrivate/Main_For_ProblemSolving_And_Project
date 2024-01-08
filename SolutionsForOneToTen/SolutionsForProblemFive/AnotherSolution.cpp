@@ -1,3 +1,12 @@
+/*
+
+    --> Write A Program To Reverse The Number
+        --> Example:
+            --> Input -->> 1234
+            --> Output -->> 4321
+
+*/
+
 #include <iostream>
 
 using namespace std;
