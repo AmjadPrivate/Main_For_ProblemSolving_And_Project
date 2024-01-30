@@ -3,6 +3,7 @@
 
 using namespace std;
 
+<<<<<<< HEAD
 void printAllLettersFrom_AAA_To_ZZZ()
 {
 
@@ -31,10 +32,22 @@ void printAllLettersFrom_AAA_To_ZZZ()
 
             }
 
+=======
+void PrintAllWordsForm_AAA_To_ZZZ()
+{
+
+      
+    for(int i = 65; i <= 90; i++)
+    {
+
+        for(int j = )
+        {
+>>>>>>> refs/remotes/origin/main
 
         }
 
 
+<<<<<<< HEAD
     }
     
 
@@ -47,6 +60,16 @@ void printAllLettersFrom_AAA_To_ZZZ()
 int main()
 {
     printAllLettersFrom_AAA_To_ZZZ();
+=======
+        cout << "---";
+    }
+
+
+}
+
+int main()
+{
+>>>>>>> refs/remotes/origin/main
 
     return 0;
 }
