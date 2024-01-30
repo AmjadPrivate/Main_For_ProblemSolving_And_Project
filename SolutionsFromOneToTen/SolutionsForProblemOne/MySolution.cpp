@@ -13,8 +13,9 @@ using namespace std;
 
 void MultiplicationTableHeader()
 {
-    cout << "\n                  Multiplication Table Form 1 To 10                  " << endl;
     
+    cout << "\n                  Multiplication Table Form 1 To 10                  " << endl;
+
     cout << endl;
 
     for(int Counter = 1; Counter <= 10; Counter++) // This Loop Will Print The Numbers Form 1 To 10.
