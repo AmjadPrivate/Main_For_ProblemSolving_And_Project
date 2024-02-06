@@ -28,11 +28,11 @@ int ReverseNumber(int Number)
 
     while (Number != 0) 
     {
+        NumberAfterReverse = NumberAfterReverse * 10;
     
         Remainder = Number % 10;
         Number = Number / 10;
 
-        NumberAfterReverse = NumberAfterReverse * 10;
         NumberAfterReverse += Remainder;
 
     }

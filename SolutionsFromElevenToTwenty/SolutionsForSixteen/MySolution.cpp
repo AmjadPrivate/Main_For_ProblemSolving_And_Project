@@ -1,16 +1,9 @@
 #include <iostream>
 
-
 using namespace std;
 
-<<<<<<< HEAD
-void printAllLettersFrom_AAA_To_ZZZ()
+void PrintAllLettersForm_AAA_ZZZ()
 {
-
-    cout << "\n";
-
-    string Word = "";
-
 
 
     for(int i = 65; i <= 90; i++)
@@ -18,58 +11,29 @@ void printAllLettersFrom_AAA_To_ZZZ()
 
         for(int j = 65; j <= 90; j++)
         {
-            
-            for(int k = 65; k <= 90; k++)
+
+            for(int z = 65; z <= 90; z++)
             {
 
-                Word = Word + char(i);
-                Word = Word + char(j);
-                Word = Word + char(k);
-
-                cout << Word << endl;
-
-                Word = "";
+                cout << char(i) << char(j) << char(z) << endl;
 
             }
 
-=======
-void PrintAllWordsForm_AAA_To_ZZZ()
-{
-
-      
-    for(int i = 65; i <= 90; i++)
-    {
-
-        for(int j = )
-        {
->>>>>>> refs/remotes/origin/main
-
+            cout << "----------\n";
         }
 
 
-<<<<<<< HEAD
-    }
-    
-
-    cout << "-------------------\n";
-
-
-}
-
-
-int main()
-{
-    printAllLettersFrom_AAA_To_ZZZ();
-=======
-        cout << "---";
     }
 
 
 }
 
+
+
 int main()
 {
->>>>>>> refs/remotes/origin/main
+
+    PrintAllLettersForm_AAA_ZZZ();
 
     return 0;
 }

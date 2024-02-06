@@ -26,6 +26,7 @@ int ReadPositiveNumber(string Message)
     return Number;
 }
 
+
 bool IsPerfectNumber(int Number)
 {
     int Sum = 0;
@@ -40,6 +41,7 @@ bool IsPerfectNumber(int Number)
 
     return Number == Sum;
 }
+
 
 void PrintResult(int Number)
 {
