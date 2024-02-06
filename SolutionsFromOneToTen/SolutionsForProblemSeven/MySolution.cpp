@@ -45,8 +45,8 @@ int main()
 
     int Number = ReadPositiveNumber("Please Enter A Positive Number? ");
     
-
-    cout << Number << " Reversed " << ReverseTheNumbers(Number) << endl;
+    cout << endl;
+    cout << Number << " After Reverse Will Be " << ReverseTheNumbers(Number) << endl;
 
 
     return 0;
