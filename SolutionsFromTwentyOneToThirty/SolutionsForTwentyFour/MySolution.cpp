@@ -4,7 +4,7 @@
 
 /*
 
-    --> [ Max Of Random Array ]
+    --> [ Max Number Of Random Array ]
 
         ==> Write A Program To Fill Array With Max Size 100 With Random Numbers From 1 To 100, 
             Then Print Max Number
