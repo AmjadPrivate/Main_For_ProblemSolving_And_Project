@@ -1,3 +1,4 @@
+#include <cmath>
 #include <cstdlib>
 #include <iostream>
 
@@ -42,6 +43,26 @@ void PrintArray(int Array[100], int ArrayLength)
 }
 
 
+int SumArray(int Array[100], int ArrayLength)
+{
+    int Sum = 0;
+
+    for(int i = 0; i < ArrayLength; i++)
+    {
+        Sum += Array[i];
+    }
+
+
+    return Sum;
+}
+
+
+float AverageArray(int Array[100], int ArrayLength)
+{
+    return float(SumArray(Array, ArrayLength)) / ArrayLength;
+}
+
+
 void CopyArray(int SourceArray[100], int DestinationArray[100], int ArrayLength)
 {
     for(int i = 0; i < ArrayLength; i++)
@@ -52,29 +73,25 @@ void CopyArray(int SourceArray[100], int DestinationArray[100], int ArrayLength)
 }
 
 
+bool CheckPrimeNumber(int Number)
+{
+
+    // #include <math.h>
+    int M = round(Number / 2);
+
+    for(int Counter = 2; Counter <= M; Counter++)
+    {
+        if(Number % Counter == 0)
+            return false;
+    }
+    
+
+    return true;
+}
+
 
 int main()
 {
-    srand((unsigned) time (NULL));
-
-    int arr1[100], ArrayLength;
-    // Fill Array.
-    FillArrayWithRandomNumbers(arr1, ArrayLength);
-
-
-    // Copy Array.
-    int arr2[100];
-    CopyArray(arr1, arr2, ArrayLength);
-
-
-    // Print The Main Array First And Print The Seconde Array.
-    cout << "\nThe Main Array Is :" << endl;
-    PrintArray(arr1, ArrayLength);
-
-    // Print Seconde Array.
-    cout << "\nCoped Array Is: " << endl;   
-    PrintArray(arr2, ArrayLength);
-
 
     return 0;
 }
