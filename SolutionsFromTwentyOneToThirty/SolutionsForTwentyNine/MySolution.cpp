@@ -79,7 +79,7 @@ void CopyPrimeNumbersInAnotherArray(int SourceArray[100], int DestinationArray[]
         
     }
 
-    ArrayLength = Counter; 
+    ArrayLength = --Counter; 
 }
 
 
