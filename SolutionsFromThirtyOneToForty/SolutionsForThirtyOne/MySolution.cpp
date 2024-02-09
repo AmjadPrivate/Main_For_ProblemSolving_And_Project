@@ -35,58 +35,30 @@ int RandomNumber(int From, int To)
 
 
 // This Is Function Fill Array Numbers From One To N
-void FillArrayInOrderFrom_One_To_N(int Array[100], int N)
+void FillArrayInOrderFrom_One_To_N(int Array[100], int ArrayLenght)
 {
 
-    for(int i = 1; i <= N; i++)
-    {
-        Array[i - 1] = i;
-    }
-
-
+    for(int i = 0; i <= ArrayLenght; i++)
+        Array[i] = i + 1;
+    
 }
 
 
-enum enIsNumberRepeated {Repeated = 1, NotRepeated = 2};
-
-
-enIsNumberRepeated IsRepeated(int Array[100], int Number, int ArrayLength)
+void Swap(int& A, int& B)
 {
-    int Counter = 0;
+    int Temp = 0;
 
-    for(int i = 0; i < ArrayLength; i++)
-    {
-        if(Array[i] == Number)
-        {
-            Counter++;
-
-            if(Counter > 1)
-                return enIsNumberRepeated::Repeated;
-        }
-    }
-
-    return enIsNumberRepeated::NotRepeated;
-
+    Temp = A;
+    A = B;
+    B = Temp;
+    
 }
 
 
 void ShuffleArray(int Array[100], int N)
 {
-    int RandomNum = 0;
+    
 
-    for (int i = 0; i < N;) 
-    {
-        RandomNum = RandomNumber(1, N);
-
-        if(IsRepeated(Array,  RandomNum,  N) == enIsNumberRepeated::NotRepeated)
-        {
-            Array[i] = RandomNum;
-            i++;
-            
-        }
-        
-
-    }
 
 }
 
@@ -113,22 +85,23 @@ int main()
     srand((unsigned) time (NULL));
     
     int arr[100],
-    N = ReadPositiveNumber("Please Enter A Positive Number? ");
+
+    ArrayLenght = ReadPositiveNumber("Please Enter A Positive Number? ");
 
     // Fill Array In Order.
-    FillArrayInOrderFrom_One_To_N(arr, N);
+    FillArrayInOrderFrom_One_To_N(arr, ArrayLenght);
 
     // Print Array Before Shuffle.
     cout << "\n Array Before Shuffle: ";
-    PrintArray(arr, N);
+    PrintArray(arr, ArrayLenght);
 
 
     // Shuffle Array
-    ShuffleArray(arr, N);
+    ShuffleArray(arr, ArrayLenght);
 
     // Print Array After Suffled
-    cout << "\n Array After Shuffle: ";
-    PrintArray(arr, N);
+    cout << "\n Array After Shuffled: ";
+    PrintArray(arr, ArrayLenght);
 
 
 

@@ -95,8 +95,6 @@ bool CheckPrimeNumber(int Number)
 
 
 enum enIsNumberRepeated {Repeated = 1, NotRepeated = 2};
-
-
 enIsNumberRepeated IsRepeated(int Array[100], int Number, int ArrayLength)
 {
     int Counter = 0;
