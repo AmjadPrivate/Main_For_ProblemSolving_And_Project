@@ -117,22 +117,62 @@ enIsNumberRepeated IsRepeated(int Array[100], int Number, int ArrayLength)
 }
 
 
+int PositionNumber(int Array[100], int ArrayLength, int Number)
+{
+
+    int Counter = 0;
+
+    for (int i = 0; i < ArrayLength; i++) 
+    {
+        
+        if(Array[i] == Number)
+        {
+            return Counter;
+        }
+
+        Counter++;
+
+    }
+
+
+    return -1;
+
+}
+
+
+enum enFoundOrNot {Found = 1, NotFound = 2};
+enFoundOrNot SearchForNumberInArrayIsFoundOrNot(int Array[100], int ArrayLength,int NumberToSearch)
+{
+
+    for(int i = 0; i < ArrayLength; i++)
+    {
+        if(Array[i] == NumberToSearch)
+        {
+            return enFoundOrNot::Found;
+        }
+    }
+
+    return enFoundOrNot::NotFound;
+}
+
+
+
 
 int main()
 {
     srand((unsigned) time (NULL));
 
-    int arr [10]= {1,1,2,4,6,4,9,8,10,11};
+    // // int arr [10]= {1,1,2,4,6,4,9,8,10,11};
 
 
-    if(IsRepeated(arr,  1, 10) == enIsNumberRepeated::Repeated)
-    {
-        cout << "\n Repeated \n" << endl;
-    }
-    else
-    {
-        cout << "\n Not Repeated \n" << endl;
-    }
+    // if(IsRepeated(arr,  1, 10) == enIsNumberRepeated::Repeated)
+    // {
+    //     cout << "\n Repeated \n" << endl;
+    // }
+    // else
+    // {
+    //     cout << "\n Not Repeated \n" << endl;
+    // }
 
     return 0;
 }
