@@ -65,59 +65,62 @@ char GetRandomCharacter(enCharacterType CharacterType)
 }
 
 
+string GetRandomWord(int WordLength, enCharacterType CharacterType)
+{
+    string Word = "";
+
+    for(int i = 1; i <= WordLength; i++)
+    {
+        Word = Word + GetRandomCharacter(CharacterType);
+    }
+
+    return Word;
+}
 
 
 
-string GeneratKey(enCharacterType KeyType, int KeyLength)
+// Generat Keys Function, This Functio Need [Get Random Funciton And Word Length, KeyType(Means Key Character) ]
+string GeneratKey(enCharacterType KeyType, int WordLength)
 {
     string Key = "";
 
-    int Counter = 1; 
 
-    for(int i = 0; i <= KeyLength; i++)
+    for(int i = 1; i <= WordLength; i++)
     {
-
-        
-        Counter++;
-
-        if(Counter == 4)
-        {
-            Key = Key + GetRandomCharacter(KeyType) + "-";
-            Counter = 1;
-        }
-        else
+        if(i == WordLength)
         {
 
-            Key = Key + GetRandomCharacter(KeyType);
+            Key += GetRandomWord( WordLength, KeyType);
+        }
+        else {
+             Key += GetRandomWord( WordLength, KeyType) + "-";
         
         }
-
+            
+        
     }
 
+    
     return Key;
 }
 
 
-void FillArrayWithKeys(string Array[100] ,int &ArrayLength)
+
+void FillArrayWithKeys(string Array[100] ,int ArrayLength)
 {
-    ArrayLength = ReadNumberInRange(1 , 100, "Enter How Many Keys: "); // Max Size Of Array.
     
-    int KeyLength = ReadNumberInRange(1, 50, "Please Enter The Length Of Key");
 
     for(int i = 0; i < ArrayLength; i++)
     {
-        Array[i] = GeneratKey(enCharacterType::CapitalLetter, KeyLength);
+        Array[i] = GeneratKey(enCharacterType::CapitalLetter, 4);
     }
 
 
 }
 
 
-void PrintArray(string Array[100], int ArrayLength)
+void PrintStringArray(string Array[100], int ArrayLength)
 {
-
-    srand((unsigned) time (NULL));
-
 
     cout << "\n";
 
@@ -135,15 +138,20 @@ void PrintArray(string Array[100], int ArrayLength)
 
 int main()
 {
+    srand((unsigned) time (NULL));
+
     string arr[100];
     int ArrayLength = 0;
+
+    ArrayLength = ReadNumberInRange(1 , 100, "Enter How Many Keys Do You Want To Generat: \n"); // Max Size Of Array.
     
     // Fill Array With Keys 
     FillArrayWithKeys(arr, ArrayLength);
 
     // Print Array.
-    cout << "\n Array Elements: ";
-    PrintArray(arr, ArrayLength);
+    cout << "\nArray Elements: \n";
+    PrintStringArray(arr, ArrayLength);
+
 
 
     return 0;
