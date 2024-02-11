@@ -31,6 +31,8 @@ void FillArrayWithRandomNumbers(int arr[100], int& ArrayLength)
 
 void PrintArray(int Array[100], int ArrayLength)
 {
+    srand((unsigned) time (NULL));
+
 
     cout << "\n";
 

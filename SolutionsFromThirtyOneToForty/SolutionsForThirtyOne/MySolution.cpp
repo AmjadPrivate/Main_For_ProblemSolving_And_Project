@@ -51,14 +51,17 @@ void Swap(int& A, int& B)
     Temp = A;
     A = B;
     B = Temp;
-    
+
 }
 
 
-void ShuffleArray(int Array[100], int N)
+void ShuffleArray(int Array[100], int ArrayLength)
 {
     
-
+    for(int i = 0; i < ArrayLength; i++)    
+    {
+        Swap(Array [RandomNumber(1, ArrayLength) - 1], Array [RandomNumber(1, ArrayLength) - 1]);
+    }
 
 }
 
