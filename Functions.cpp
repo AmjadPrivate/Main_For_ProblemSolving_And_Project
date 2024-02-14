@@ -31,20 +31,14 @@ void FillArrayWithRandomNumbers(int arr[100], int& ArrayLength)
 
 void PrintArray(int Array[100], int ArrayLength)
 {
-    srand((unsigned) time (NULL));
-
-
-    cout << "\n";
-
+        
     for(int i = 0; i < ArrayLength; i++)
-    {
-
         cout << Array[i] << " ";
 
-    }
+    
 
     cout << endl;
-
+    
 }
 
 
@@ -155,6 +149,31 @@ enFoundOrNot SearchForNumberInArrayIsFoundOrNot(int Array[100], int ArrayLength,
     return enFoundOrNot::NotFound;
 }
 
+
+
+// If This Function Returned true That's Mean The Number Is Found, If False Mean The Number Is Not Found 
+bool IsNumberInArray(int Number, int arr[100], int ArrayLength)
+{
+    return FindNumberPositionInArray(Number, arr, ArrayLength) != -1;
+}
+
+
+short FindNumberPositionInArray(int Number, int arr[100], int ArrayLength)
+{
+
+    for(int i = 0; i < ArrayLength; i++)
+    {
+
+        if(arr[i] == Number)
+        {
+            return i;
+        }
+
+    }
+
+
+    return -1;
+}
 
 
 
