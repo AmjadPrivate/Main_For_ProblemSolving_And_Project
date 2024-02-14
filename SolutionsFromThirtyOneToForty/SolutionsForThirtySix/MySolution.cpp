@@ -75,9 +75,6 @@ int main()
     FillArrayWithAsks(arr, ArrayLength);
 
 
-
-    
-
     // Print Array Lenght 
     cout << "\nArray Length: " << ArrayLength << endl;
     // Print Array Elements.

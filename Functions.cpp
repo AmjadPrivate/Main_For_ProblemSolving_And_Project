@@ -6,14 +6,25 @@
 using namespace std;
 
 
-
-
 int RandomNumber(int From, int To)
 {
     int RandomNumber = rand() % (To - From + 1) + From;
 
     return RandomNumber;    
 }
+
+
+int ReadNumber()
+{
+    int Number = 0;
+
+    cout << "Plase Enter A Number? " << endl;
+    cin >> Number;
+
+    return Number;
+}
+
+
 
 
 void FillArrayWithRandomNumbers(int arr[100], int& ArrayLength)
@@ -40,6 +51,8 @@ void PrintArray(int Array[100], int ArrayLength)
     cout << endl;
     
 }
+
+
 
 
 int SumArray(int Array[100], int ArrayLength)
@@ -174,6 +187,46 @@ short FindNumberPositionInArray(int Number, int arr[100], int ArrayLength)
 
     return -1;
 }
+
+
+void AddArrayElemets(int Number, int arr[100], int& ArrayLength)
+{
+
+    ArrayLength++;
+    
+    arr[ArrayLength - 1] = Number;
+
+}
+
+
+void InputUserNumbersInArray(int arr[100], int& ArrayLength)
+{
+    bool AddMore = true;
+
+    do
+    {
+        AddArrayElemets(ReadNumber(), arr, ArrayLength);
+        
+        
+        cout << "\n Do You Want To Add More Numbers? [0]No,[1]Yes?";
+        cin >> AddMore;
+
+    }
+    while (AddMore);
+        
+
+}
+
+
+void CopyArrayUsingAddArrayElemet(int SourceArray[100], int DestinationArray[100], int ArrayLength, int& Array2Length)
+{
+    for(int i = 0; i < ArrayLength; i++)
+    {
+        AddArrayElemets(SourceArray[i], DestinationArray, Array2Length);
+    }
+
+}
+
 
 
 
