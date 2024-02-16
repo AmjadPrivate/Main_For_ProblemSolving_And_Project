@@ -175,14 +175,6 @@ enFoundOrNot SearchForNumberInArrayIsFoundOrNot(int Array[100], int ArrayLength,
 }
 
 
-
-// If This Function Returned true That's Mean The Number Is Found, If False Mean The Number Is Not Found 
-bool IsNumberInArray(int Number, int arr[100], int ArrayLength)
-{
-    return FindNumberPositionInArray(Number, arr, ArrayLength) != -1;
-}
-
-
 short FindNumberPositionInArray(int Number, int arr[100], int ArrayLength)
 {
 
@@ -199,6 +191,14 @@ short FindNumberPositionInArray(int Number, int arr[100], int ArrayLength)
 
     return -1;
 }
+
+// If This Function Returned true That's Mean The Number Is Found, If False Mean The Number Is Not Found 
+bool IsNumberInArray(int Number, int arr[100], int ArrayLength)
+{
+    return FindNumberPositionInArray(Number, arr, ArrayLength) != -1;
+}
+
+
 
 
 void AddArrayElemets(int Number, int arr[100], int& ArrayLength)
