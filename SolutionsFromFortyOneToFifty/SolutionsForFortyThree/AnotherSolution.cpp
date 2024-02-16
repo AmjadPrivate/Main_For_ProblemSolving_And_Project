@@ -8,7 +8,8 @@ using namespace std;
 int main()
 {
 
-	return 0;
+	cout << "\n\t\tSAME LIKE ME \n";
 	
+	return 0;
 }
 
