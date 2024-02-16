@@ -52,6 +52,18 @@ void PrintArray(int Array[100], int ArrayLength)
     
 }
 
+void CopyArrayInReverseOrder(int ArraySourse[100], int ArrayDestination[100], int ArrayLength)
+{
+
+    for(int i = 0; i < ArrayLength; i++)
+    {
+
+        ArrayDestination[i] = ArraySourse[ArrayLength - 1 - i];
+
+    }
+
+} 
+
 
 
 
