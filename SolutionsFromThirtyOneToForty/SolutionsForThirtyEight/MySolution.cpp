@@ -71,6 +71,8 @@ void PrintArray(int Array[100], int ArrayLength)
 
 int main()
 {
+    srand((unsigned) time (NULL));
+
     int arr[100], ArrayLength = 0, Array2Length = 0; 
 
     FillArrayWithRandomNumbers(arr, ArrayLength);
@@ -85,6 +87,7 @@ int main()
 
     cout << "\n Array 2 Odd Numbers: \n";
     PrintArray(arr2, Array2Length);
+
 
 
     return 0;
