@@ -21,9 +21,9 @@ struct stGameResults
 };
 
 
-void ReadNumberInRange(short From, short To, short& Number, string Message)
+int ReadNumberInRange(short From, short To, string Message)
 {
-
+    short Number = 0;
     do 
     {
 
@@ -31,8 +31,9 @@ void ReadNumberInRange(short From, short To, short& Number, string Message)
         cin >> Number;
 
     }
-    while (Number < From || Number > To);
+    while (Number < From && Number > To);
 
+    return Number;
 
 }
 
@@ -48,7 +49,8 @@ enUsersInput PlayerOneInputs()
 {
     short Answer = 0;
 
-    ReadNumberInRange(1, 3, Answer, "Your Choice: [1]:Stone , [2]:Paper , [3]:Scissors ");
+
+    Answer = ReadNumberInRange(1, 3, "Your Choice: [1]:Stone , [2]:Paper , [3]:Scissors ");
 
     return enUsersInput(Answer);
 }
@@ -58,7 +60,7 @@ enUsersInput PlayerOneInputs()
 enHowIsWon HowIsWon(enUsersInput PlayerOneInput, enUsersInput ComputerInput)
 {
 
-    // The Proceses Will Be Here
+
 
     if(PlayerOneInput ==  ComputerInput)
     {
@@ -71,37 +73,46 @@ enHowIsWon HowIsWon(enUsersInput PlayerOneInput, enUsersInput ComputerInput)
         {
 
             return enHowIsWon::Computer;
-        
+            system("color 4F");
+            cout << "\a";
+
         }
         else if(PlayerOneInput == enUsersInput::Stone && ComputerInput == enUsersInput::Scissors)
         {
 
             return enHowIsWon::Player1;
+            system("color 2F");
 
         }
         else if(PlayerOneInput == enUsersInput::Paper && ComputerInput == enUsersInput::Stone)
         {
 
             return enHowIsWon::Player1;
+            system("color 2F");
 
         } 
         else if(PlayerOneInput == enUsersInput::Paper && ComputerInput == enUsersInput::Scissors) 
         {
 
             return enHowIsWon::Computer;
+            system("color 4F");
+            cout << "\a";
         
         }
         else if(PlayerOneInput == enUsersInput::Scissors && ComputerInput == enUsersInput::Stone) 
         {
 
             return enHowIsWon::Computer;
+            system("color 4F");
+            cout << "\a";
         
         }
         else if(PlayerOneInput == enUsersInput::Scissors && ComputerInput == enUsersInput::Paper) 
         {
 
             return enHowIsWon::Player1;
-        
+            system("color 2F");
+
         }
         else 
         {
@@ -274,7 +285,7 @@ void StartTheGame()
     do 
     {
         // This Function Read How Many Round Do You Want To Play 
-        ReadNumberInRange(1 , 10 ,GameResults.Game_Rounds, "How Many Rounds Do You Want To Play? ");
+        GameResults.Game_Rounds =  ReadNumberInRange(1 , 10 , "How Many Rounds Do You Want To Play? ");
     
         for(int i = 1; i <= GameResults.Game_Rounds; i++)
         {
