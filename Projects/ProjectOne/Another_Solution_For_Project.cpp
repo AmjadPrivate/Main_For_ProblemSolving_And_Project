@@ -27,6 +27,7 @@ struct stRoundInfo
     enGameChoice ComputerChoice;
     enWinner Winner;
     string WinnerName = "";
+    
 };
 
 short ReadHowManyRounds()
@@ -52,7 +53,7 @@ int RandomNumber(short From, short To)
 
 string WinnerName(enWinner WinnerName)
 {
-    string arrWinnerName[3] = {"Player1", "Computer", "NoWinner"};
+    string arrWinnerName[3] = {"[Player1]", "[Computer]", "[No Winner]"};
 
     return arrWinnerName[WinnerName - 1];
 }
@@ -64,6 +65,7 @@ enWinner HowWonTheRound(stRoundInfo RoundInfo)
         return enWinner::Draw;
     }
 
+    // In Case Computer Win's Only.
     switch (RoundInfo.Player1Choice)
     {
         case enGameChoice::Stone:
@@ -91,6 +93,35 @@ enWinner HowWonTheRound(stRoundInfo RoundInfo)
     return enWinner::Player1;
 }
 
+
+enWinner HowWonTheGame(short Player1WinTimes, short ComputerWinTimes)
+{
+
+    if(Player1WinTimes > ComputerWinTimes)
+        return enWinner::Player1;
+    else if(ComputerWinTimes > Player1WinTimes)
+        return enWinner::Computer;
+    else
+        return enWinner::Draw;
+
+}
+
+
+stGameReuslts FillGameResults(short GameRounds, short Player1WinTimes, short ComputerWinTimes, short DrawTimes)
+{
+
+    stGameReuslts GameResults;
+
+    GameResults.GameRounds = GameRounds;
+    GameResults.Player1WinTimes = Player1WinTimes;
+    GameResults.ComputerWinTimes = ComputerWinTimes;    
+    GameResults.DrawTimes = DrawTimes;
+    GameResults.GameWinner = HowWonTheGame(Player1WinTimes,  ComputerWinTimes);
+    GameResults.WinnerName = WinnerName(GameResults.GameWinner);
+
+    return GameResults;
+}
+
 string ChoiceName(enGameChoice Choice)
 {
     string arrChoiceName[3] = {"Stone", "Paper", "Scissors"};
@@ -98,10 +129,16 @@ string ChoiceName(enGameChoice Choice)
     return arrChoiceName[Choice - 1];
 }
 
-
 void PrintRoundResults(stRoundInfo RoundInfo)
 {
-    // I Stoped Here :), Good Mornoing.
+    cout << "--------------- Round[" << RoundInfo.RoundNumber<< "] ---------------\n";
+
+    cout << "Player1 Choice   : " << ChoiceName(RoundInfo.Player1Choice) << endl;
+    cout << "Computer Choice  : " << ChoiceName(RoundInfo.ComputerChoice) << endl;
+    cout << "Round Winner     : " << RoundInfo.WinnerName << endl;
+
+    cout << "-------------------------------------------\n"; 
+    
 }
 
 
@@ -132,6 +169,7 @@ stGameReuslts PlayGame(short HowMayRounds)
 
     for(int GameRound = 1; GameRound <= HowMayRounds; GameRound++)
     {
+
         cout << "\n Round [" << GameRound << "] Begins:\n";
         RoundInfo.RoundNumber = GameRound;
         RoundInfo.Player1Choice = ReadPlayer1Choice();
@@ -143,22 +181,71 @@ stGameReuslts PlayGame(short HowMayRounds)
         // Increase Win/Draw Counters.
 
         if(RoundInfo.Winner == enWinner::Player1)
+        {
+
             Player1WinTimes++;
+
+        }
         else if (RoundInfo.Winner == enWinner::Computer)
+        {
+            
             ComputerWinTimes++;
+
+        }
         else
+        {
+            
             DrawTimes++;
 
+        }
+
+
+        PrintRoundResults(RoundInfo);
     }
 
 
+    return FillGameResults(HowMayRounds,  Player1WinTimes,  ComputerWinTimes,  DrawTimes);
 
 }
 
 
+string Taps(short NumberOfTaps)
+{
+    string t ="";
+
+    for(int i = 1; i <= NumberOfTaps; i++)
+    {
+        t = t + "\t";
+        cout << t;
+    }
+    
+    return t;
+}
+
+void ShowGameOverScreen()
+{
+    cout << Taps(2) << "--------------------------------------------\n\n";
+    
+    cout << Taps(2) << "                   ++ Game Over ++\n";
+    
+    cout << Taps(2) << "--------------------------------------------\n\n";
+
+}
 
 
+void ShowFinalGameResult(stGameReuslts GameResults)
+{
 
+    cout << Taps(2) << "--------------------- [Game Results] ---------------------\n\n";
+    cout << Taps(2) << "Game Rounds         :" << GameResults.GameRounds << endl;
+    cout << Taps(2) << "Player Won Times    :" << GameResults.Player1WinTimes << endl;
+    cout << Taps(2) << "Computer Won Times  :" << GameResults.ComputerWinTimes << endl;
+    cout << Taps(2) << "Draw Times          :" << GameResults.DrawTimes << endl;
+    cout << Taps(2) << "Final Winner        :" << GameResults.WinnerName << endl;
+
+    cout << Taps(2) << "-------------------------------------------------------------\n\n";
+
+}
 
 
 void StartGame()
@@ -169,7 +256,11 @@ void StartGame()
     do
     {
         stGameReuslts GameResults = PlayGame(ReadHowManyRounds());
+        ShowGameOverScreen();
+        ShowFinalGameResult(GameResults);
 
+        cout << Taps(3) << "Do You Wnat Play Agian Y/N ";
+        cin >> PlayAgian;
 
     }
     while (PlayAgian == 'Y' || PlayAgian == 'y');
@@ -189,7 +280,7 @@ int main()
 
     StartGame();
 
-    restgame();
+    
     return 0;
 }
 
