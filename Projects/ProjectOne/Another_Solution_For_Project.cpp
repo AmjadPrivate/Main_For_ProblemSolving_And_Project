@@ -9,7 +9,7 @@ enum enGameChoice {Stone = 1, Paper = 2, Scissors =3};
 enum enWinner {Player1 = 1, Computer =2, Draw = 3};
 
 
-struct stGameReuslts
+struct stGameResults
 {
     short GameRounds = 0;
     short Player1WinTimes = 0;
@@ -36,7 +36,7 @@ short ReadHowManyRounds()
 
     do
     {
-        cout << "How Many Rounds Do You Wnat To Play ? 1 To 10 \n";
+        cout << "How Many Rounds Do You Want To Play ? 1 To 10 \n";
         cin >> GameRounds;
     }
     while (GameRounds < 1 || GameRounds > 10);
@@ -107,10 +107,10 @@ enWinner HowWonTheGame(short Player1WinTimes, short ComputerWinTimes)
 }
 
 
-stGameReuslts FillGameResults(short GameRounds, short Player1WinTimes, short ComputerWinTimes, short DrawTimes)
+stGameResults FillGameResults(short GameRounds, short Player1WinTimes, short ComputerWinTimes, short DrawTimes)
 {
 
-    stGameReuslts GameResults;
+    stGameResults GameResults;
 
     GameResults.GameRounds = GameRounds;
     GameResults.Player1WinTimes = Player1WinTimes;
@@ -141,7 +141,6 @@ void PrintRoundResults(stRoundInfo RoundInfo)
     
 }
 
-
 enGameChoice ReadPlayer1Choice()
 {
 
@@ -157,12 +156,13 @@ enGameChoice ReadPlayer1Choice()
     return (enGameChoice) Choice;
 }
 
-enGameChoice GetComputerChoce()
+enGameChoice GetComputerChoice()
 {
     return (enGameChoice)RandomNumber(1, 3);
 }
 
-stGameReuslts PlayGame(short HowMayRounds)
+
+stGameResults PlayGame(short HowMayRounds)
 {
     stRoundInfo RoundInfo;
     short Player1WinTimes = 0, ComputerWinTimes = 0, DrawTimes = 0;
@@ -173,7 +173,7 @@ stGameReuslts PlayGame(short HowMayRounds)
         cout << "\n Round [" << GameRound << "] Begins:\n";
         RoundInfo.RoundNumber = GameRound;
         RoundInfo.Player1Choice = ReadPlayer1Choice();
-        RoundInfo.ComputerChoice = GetComputerChoce();
+        RoundInfo.ComputerChoice = GetComputerChoice();
         RoundInfo.Winner = HowWonTheRound(RoundInfo);
         RoundInfo.WinnerName = WinnerName(RoundInfo.Winner);
 
@@ -233,7 +233,7 @@ void ShowGameOverScreen()
 }
 
 
-void ShowFinalGameResult(stGameReuslts GameResults)
+void ShowFinalGameResult(stGameResults GameResults)
 {
 
     cout << Taps(2) << "--------------------- [Game Results] ---------------------\n\n";
@@ -247,7 +247,6 @@ void ShowFinalGameResult(stGameReuslts GameResults)
 
 }
 
-
 void StartGame()
 {
     char PlayAgian = 'Y';
@@ -255,7 +254,7 @@ void StartGame()
 
     do
     {
-        stGameReuslts GameResults = PlayGame(ReadHowManyRounds());
+        stGameResults GameResults = PlayGame(ReadHowManyRounds());
         ShowGameOverScreen();
         ShowFinalGameResult(GameResults);
 
@@ -268,10 +267,6 @@ void StartGame()
 
 
 }
-
-
-
-
 
 int main()
 {
