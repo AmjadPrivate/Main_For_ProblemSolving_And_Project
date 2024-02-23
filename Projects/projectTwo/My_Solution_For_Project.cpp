@@ -41,7 +41,7 @@ struct stQuestionInfo
 
 int GetRandomNumber(short From, short To)
 {
-    short RandomNumber = rand() % (To - From - 1) - From;
+    short RandomNumber = rand() % (To - From + 1) + From;
 
     return RandomNumber;
 }
@@ -88,11 +88,11 @@ enOperationTypes ReadOperationType()
 
     do 
     {
-        cout << "Enter Questions Level [1] Add, [2] Sub, [3] Mul, [4] Div [5] Mix ? ";
+        cout << "Enter Operation Type [1] Add, [2] Sub, [3] Mul, [4] Div [5] Mix ? ";
         cin >> OT;
     
     }
-    while (OT < 1 || OT > 4);
+    while (OT < 1 || OT > 5);
 
     return enOperationTypes(OT);
 }
@@ -110,17 +110,17 @@ enOperationTypes ReadOperationType()
          }
          case enQuestionsLevel::Med:
          {
-             return GetRandomNumber(1, 30);
+             return GetRandomNumber(10, 30);
              break;
          }
          case enQuestionsLevel::Hard:
          {
-             return GetRandomNumber(1, 60);
+             return GetRandomNumber(20, 60);
             break;
          }
-         case enQuestionsLevel::Mix:
+        default: //  Means Mix
          {
-             return GetRandomNumber(1, 100);
+             return GetRandomNumber(6, 120);
              break;
          }
      }
@@ -148,7 +148,7 @@ enOperationTypes ReadOperationType()
              return 'x';
             break;
          }
-         case enOperationTypes::Div:
+         default: 
          {
              return '/';
              break;
@@ -163,8 +163,8 @@ enOperationTypes ReadOperationType()
 void QuestionStyle(short Num1, short Num2, char OT)
 {
     cout << Num1 << endl;
-    cout << Num2 << " " << OT << endl;
-    cout << "\n-------------\n";
+    cout << "\n" << Num2 << " " << OT << endl;
+    cout << "------------\n";
 }
 
 
@@ -190,9 +190,11 @@ short SolveQuestion(short Num1, short Num2, enOperationTypes OT)
         }
         case enOperationTypes::Div:
         {
-            return Num1 - Num2;
+            return Num1 / Num2;
             break;
         }
+        default:
+            return 0; // Something Wrong.
     }
 
 }
@@ -217,11 +219,11 @@ void AnswerOfQuestion(short TheRightAnswer, enCheckAnswer CheckAnswer)
 {
     if(CheckAnswer == enCheckAnswer::True)
     {
-        cout <<"Right Answer :--) ";
+        cout <<"\nRight Answer :--) \n";
     }
     else
     {
-        cout <<"Wrong Answer :--( \n";
+        cout <<"\nWrong Answer :--( \n";
         cout << "The Right Answer Is " << TheRightAnswer << endl;
 
     }
@@ -264,7 +266,7 @@ stFinalResult PlayMathGame(short QuestionNumbers)
         {
             enOperationTypes OPType;
 
-            OPType = enOperationTypes(GetRandomNumber(1, 4));
+            OPType = (enOperationTypes)GetRandomNumber(1, 4);
         }
 
 
@@ -297,29 +299,61 @@ stFinalResult PlayMathGame(short QuestionNumbers)
 string FinalResultIs(short RightAnswers, short WrongAnswers)
 {
     if(RightAnswers > WrongAnswers)
+    {
         return "The Final Result Is PASS :--)";
+    }
     else if(WrongAnswers > RightAnswers)
+    {
         return "The Final Result Is FAIL :--(";
+    }
     else
+    {
         return "The Final Result Is Draw :--)";
+    }
 }
 
+string NameOfLevels(enQuestionsLevel QL)
+{
+    string LevelName[4] = {"Easy", "Med", "Hard", "Mix"};
+
+    return LevelName[QL - 1];
+}
+
+string NameOfOperation(enOperationTypes OT)
+{
+    string OperationNmaes[5] = {"Add", "Sub", "Mul", "Div", "Mix"};
+
+    return OperationNmaes[OT - 1];
+}
+
+string Taps(short NumberOfTaps)
+{
+    string t = "";
+
+    for(int i = 1; i <= NumberOfTaps; i++)
+    {
+        t = t + "\t";
+        cout << t;
+    }
+
+    return t;
+}
 
 void PrintFinalResult(stFinalResult FinalResult)
 {
-    cout << "\n---------------------\n";
+    cout << Taps(3) << "---------------------\n";
 
-    FinalResultIs(FinalResult.NumberOfRightAnswer, FinalResult.NumberOfWrongAnswer);
+    cout << Taps(3) << FinalResultIs(FinalResult.NumberOfRightAnswer, FinalResult.NumberOfWrongAnswer) << endl;
 
-    cout << "\n---------------------\n";
+    cout << Taps(3)  <<  "---------------------\n";
 
-    cout << "\nNumber Of Questions  : " << FinalResult.NumberOfQuestions << endl;
-    cout << "Questions Level        : " << FinalResult.QuestionsLevel << endl;
-    cout << "OP Type                : " << FinalResult.OperationTypes << endl;
-    cout << "Number Of Write Answer : " << FinalResult.NumberOfRightAnswer << endl;
-    cout << "Number Of Wrong Answer : " << FinalResult.NumberOfWrongAnswer << endl;
+    cout << Taps(3) << "Number Of Questions  : " << FinalResult.NumberOfQuestions << endl;
+    cout << Taps(3) << "Questions Level        : " << NameOfLevels(FinalResult.QuestionsLevel) << endl;
+    cout << Taps(3) << "OP Type                : " << NameOfOperation(FinalResult.OperationTypes)<< endl;
+    cout << Taps(3)  << "Number Of Write Answer : " << FinalResult.NumberOfRightAnswer << endl;
+    cout << Taps(3) << "Number Of Wrong Answer : " << FinalResult.NumberOfWrongAnswer << endl;
 
-    cout << "\n---------------------\n";
+    cout << Taps(3) << "---------------------\n";
 
 
 
@@ -329,7 +363,7 @@ bool PlayAgain()
 {
     char Choice = 'Y';
 
-    cout << "Do You Want Play Again Y/N ";
+    cout << Taps(3)<< "Do You Want Play Again Y/N ";
     cin >> Choice;
 
 
@@ -352,8 +386,6 @@ void StartGame()
 
 
 
-
-
 }
 
 
@@ -361,6 +393,8 @@ void StartGame()
 int main()
 {
     srand((unsigned) time (NULL));
+
+    StartGame();
 
     return 0;
 }
