@@ -24,7 +24,6 @@ struct stFinalResult
 
 struct stQuestionInfo
 {
-
     short NumberOne = 0;
     short NumberTwo = 0; 
     enQuestionsLevel QuestionLevel;
