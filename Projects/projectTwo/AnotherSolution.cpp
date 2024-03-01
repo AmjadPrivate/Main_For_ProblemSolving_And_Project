@@ -17,7 +17,7 @@ struct stQuestions
     enOperationType OperationType;
     enQuestionsLevel QuestionsLevel;
     int CorrectAnswer = 0;
-    int PlayerAnswer = 0;
+    int PlayerAnswer = 0;   
     bool AnswerResult = false;
 
 };
@@ -49,7 +49,7 @@ short ReadHowManyQuestions()
     do 
     {
     
-        cout << "How Many Question Do You Want To Play From 1 To 100? ";
+        cout << "How Many Question Do You Want To Answerx` From 1 To 10? ";
         cin >> Questions;
 
     }
@@ -61,8 +61,8 @@ short ReadHowManyQuestions()
 
 
 enQuestionsLevel ReadQuestionsLevel()
-{
-    short QLevle;
+{ 
+    short QLevle = 0;
 
     do
     {
@@ -193,16 +193,15 @@ stQuestions GenerateQuestion(enQuestionsLevel QuestionLevel, enOperationType OpT
 }
 
 
-void GenerateQuizzQuestion(stQuiz& Quizz)
+void GenerateQuizzQuestions(stQuiz& Quizz)
 {
 
-    for(int Question = 0; Question < Quizz.NumberOfQuestion; Question++)
+    for(short Question = 0; Question < Quizz.NumberOfQuestion; Question++)
     {
         
         Quizz.QuestionsList[Question] = GenerateQuestion(Quizz.QuestionsLevel, Quizz.OpType);
 
     }
-
 
 
 }
@@ -215,7 +214,8 @@ void PlayMathGame()
     Quiz.NumberOfQuestion = ReadHowManyQuestions();
     Quiz.QuestionsLevel = ReadQuestionsLevel();
     Quiz.OpType = ReadOpType();
-    GenerateQuizzQuestion(Quiz);
+    
+    GenerateQuizzQuestions  (Quiz);
 
 
 }
