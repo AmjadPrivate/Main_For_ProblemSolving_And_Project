@@ -1,4 +1,13 @@
+/*
+
+    -- Reverse The Number 
+
+        --Example : Input: 1234
+                    output: 4321
+*/
+
 #include <iostream>
+
 
 using namespace std;
 
@@ -26,11 +35,14 @@ int ReverseTheNumbers(int Number)
 
     while (Number != 0) 
     {
-        Reverse = Reverse * 10;
+
+        
+        Reverse = Reverse * 10; 
         
         Remainder = Number % 10;
         Number = Number/ 10;
-
+        
+        
         Reverse = Remainder + Reverse;
 
     }

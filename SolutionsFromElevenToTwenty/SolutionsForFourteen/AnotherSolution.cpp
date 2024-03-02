@@ -27,6 +27,8 @@ void PrintInvertedLettersPattern(int Number)
 
 
     cout << endl;
+    
+    // 65 = A , For Example The Number Is 10 
 
     for(int i = Number + 65 - 1; i >= 65; i--)
     {

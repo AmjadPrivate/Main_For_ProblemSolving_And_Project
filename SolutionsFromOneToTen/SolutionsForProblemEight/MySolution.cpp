@@ -21,6 +21,7 @@ int ReadPositiveNumber(string Message)
 }
 
 
+
 int CountDigitFrecquency(int Number, int Digit)
 {
 

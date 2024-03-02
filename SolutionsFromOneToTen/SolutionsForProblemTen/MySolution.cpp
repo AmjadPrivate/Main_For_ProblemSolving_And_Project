@@ -39,12 +39,12 @@ int ReverseNumber(int Number)
 }
 
 
-void PrintNumbers(int Number)
+void PrintAllDigits(int Number)
 {
-
     int Remainder = 0;
 
     cout << "\n";
+
     while (Number != 0) 
     {
 
@@ -63,7 +63,7 @@ int main()
     int Number = ReadPositiveNumber("Please Enter A Positive Number? ");
 
 
-    PrintNumbers(ReverseNumber(Number));
+    PrintAllDigits(ReverseNumber(Number));
 
 
     return 0;

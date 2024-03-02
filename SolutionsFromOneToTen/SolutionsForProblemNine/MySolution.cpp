@@ -34,8 +34,8 @@ int DeleteUsedDigits( int Number, int UsedDigit)
 
         if(Remainder != UsedDigit)
         {
-            TheNewNumber = TheNewNumber * 10;   
-            TheNewNumber += Remainder;    
+            TheNewNumber =  Remainder + TheNewNumber * 10;   
+            // TheNewNumber += Remainder;    
         }
 
     }
@@ -98,7 +98,7 @@ void PrintAllDigitsFrecquency(int Number)
 int main()
 {
 
-    PrintAllDigitsFrecquency(ReadPositiveNumber("Please Enter A Group Of Numbers? "));
+    PrintAllDigitsFrecquency(ReadPositiveNumber("Please Enter A Positive Numbers? "));
 
 
     return 0;

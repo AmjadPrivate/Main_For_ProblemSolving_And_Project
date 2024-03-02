@@ -12,8 +12,10 @@ int ReadPositiveNumber(string Message)
 
     do
     {
+
         cout << Message << endl;
         cin >> Number;
+    
     }
     while (Number <= 0);
     
