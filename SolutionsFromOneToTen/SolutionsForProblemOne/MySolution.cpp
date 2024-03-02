@@ -32,6 +32,10 @@ void MultiplicationTableHeader()
 void MultiplicationTable()
 {
 
+    MultiplicationTableHeader();
+
+    int MultiplicationResult = 0;
+
     for(int CounterOne = 1; CounterOne <= 10; CounterOne++)
     {
         if(CounterOne == 10)
@@ -46,7 +50,7 @@ void MultiplicationTable()
 
         for (int CounterTwo = 1; CounterTwo <= 10; CounterTwo++)
         {
-            int MultiplicationResult = CounterOne * CounterTwo;
+            MultiplicationResult = CounterOne * CounterTwo;
 
             if(MultiplicationResult >= 10)
             {
@@ -70,7 +74,6 @@ void MultiplicationTable()
 
 int main()
 {
-    MultiplicationTableHeader();
 
     MultiplicationTable();
 

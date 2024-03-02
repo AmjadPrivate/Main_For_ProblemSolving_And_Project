@@ -57,5 +57,6 @@ int main()
 
     cout << "\n The Sum Of These Numbers: " << Number << " Is --> " << SumOfDigits(Number) << endl;
 
+    system ("cls");
     return 0;
 }

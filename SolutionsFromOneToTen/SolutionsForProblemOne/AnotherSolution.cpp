@@ -6,54 +6,60 @@
 
 */
 
+
 #include <iostream>
 
 using namespace std;
 
- 
-void PrintTableHeader()
+
+void MultiplicationTableHeader()
 {
 
-    cout << "\n\n\t\t\t Multiplication Table From 1 To 10 \n\n";
-
-    cout << "\t";
-    for (int i = 1; i <= 10 ; i++)
+    cout  << "\n\n\t\t Multiplication Table Form 1 To 10\n";
+    cout << endl;
+    
+    cout << "\t"; 
+    for(int i = 1; i <= 10; i++)
     {
         cout << i << "\t";
     }
+
 
     cout << "\n------------------------------------------------------------------------------------\n";
 
 }
 
-string ColumnSepartor(int i)
+
+string ColumnSeperator(int i)
 {
-
-    if (i < 10)
+    if(i < 10)
+        return "    |";
+    else    
         return "   |";
-    else  
-        return "  |";
-
+        
 }
 
 
 void PrintMultiplicationTable()
 {
-    PrintTableHeader();
 
+    MultiplicationTableHeader();
 
     for(int i = 1; i <= 10; i++)
     {
-
-        cout << " " << i << ColumnSepartor(i) << "\t"; // This For Columns
+        cout << i << ColumnSeperator(i)  << "\t";
 
         for(int j = 1; j <= 10; j++)
         {
-            cout << i * j << "\t"; // This For Rows
+            cout << i * j << "\t";
         }
 
-        cout << endl;
+
+        cout << "\n";
+
+
     }
+
 
 }
 

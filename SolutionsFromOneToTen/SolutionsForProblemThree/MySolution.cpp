@@ -9,7 +9,7 @@
 
 using namespace std;
 
-enum enPerfectNumberOrNot { Perfect = 1, NotPerfect};
+enum enIsPerfect { Perfect = 1, NotPerfect};
 
 
 int ReadPositiveNumber(string Message)
@@ -29,25 +29,25 @@ int ReadPositiveNumber(string Message)
 }
 
 
-enPerfectNumberOrNot IsPerfectNumberOrNot(int Number)
+enIsPerfect IsPerfectNumberOrNot(int Number)
 {
-    int Counter = 0;
+    int Sum = 0;
 
-    for(int i = 1; i <= Number; i++)
+    for(int i = 1; i < Number; i++)
     {
         if(Number % i == 0)
         {
-            Counter += i;
+            Sum += i;
         
-            if(Counter == Number)
+            if(Sum == Number)
             {
-                return enPerfectNumberOrNot::Perfect;
+                return enIsPerfect::Perfect;
             }
 
         }
     }
 
-    return enPerfectNumberOrNot::NotPerfect;
+    return enIsPerfect::NotPerfect;
 
 }
 
@@ -55,7 +55,7 @@ void PrintResult(int Number)
 {
     cout << endl;
     
-    if(IsPerfectNumberOrNot(Number) == enPerfectNumberOrNot::Perfect)
+    if(IsPerfectNumberOrNot(Number) == enIsPerfect::Perfect)
         cout <<  Number << " Is Perfect Number" << endl;
     else 
         cout <<  Number << " Is Not Perfect Number" << endl;

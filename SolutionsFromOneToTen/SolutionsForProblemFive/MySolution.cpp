@@ -1,5 +1,14 @@
-#include <iostream>
+/*
 
+    --> Write A Program To Reverse The Number
+        --> Example:
+            --> Input -->> 1234
+            --> Output -->> 4321
+
+*/
+
+
+#include <iostream>
 
 using namespace std;
 
@@ -25,10 +34,12 @@ int ReadPositiveNumber(string Message)
 void PrintDigits(int Number)
 {
 
-    short int Remainder = 0;
+    short Remainder = 0;
+
+
+    
 
     cout << endl;
-
     while(Number != 0)
     {
         Remainder = Number % 10;
