@@ -17,14 +17,13 @@ struct stFinalResult
     short NumberOfQuestions = 0;
     string QuestionLevel;
     string OPType;
-    short NumberOfRightAnswer = 0;
+    short NumberOfRightAnswer = 0;  
     short NumberOfWrongAnswer = 0;
 };
 
-
 struct stQuestionInfo
 {
-    short NumberOne = 0;
+    short NumberOne = 0; // It Should be float
     short NumberTwo = 0; 
     enQuestionsLevel QuestionLevel;
     enOperationTypes OPType;
@@ -34,15 +33,12 @@ struct stQuestionInfo
 
 };
 
-
 int GetRandomNumber(short From, short To)
 {
     short RandomNumber = rand() % (To - From + 1) + From;
 
     return RandomNumber;
 }
-
-
 
 string Taps(short NumberOfTaps)
 {
@@ -57,7 +53,6 @@ string Taps(short NumberOfTaps)
     return t;
 }
 
-
 short ReadHowMayQuestions()
 {
     short Number;
@@ -65,7 +60,7 @@ short ReadHowMayQuestions()
     do 
     {
         cout << endl;
-        cout << Taps(2) << "How Many Questions Do You Want To Answer 1 To 100: ";
+        cout << Taps(1) << "How Many Questions Do You Want To Answer 1 To 100: ";
         cin >> Number;
 
     
@@ -76,15 +71,13 @@ short ReadHowMayQuestions()
     return Number;
 }
 
-
-
 enQuestionsLevel ReadQuestionsLevel()
 {
     short QL; // Questions Level
 
     do 
     {
-        cout << Taps(2) <<"Enter Questions Level [1] Easy, [2] Med, [3] Hard, [4]Mix ? ";
+        cout << Taps(1) <<"Enter Questions Level [1] Easy, [2] Med, [3] Hard, [4]Mix ? ";
         cin >> QL;
     
     }
@@ -93,14 +86,13 @@ enQuestionsLevel ReadQuestionsLevel()
     return enQuestionsLevel(QL);
 }
 
-
 enOperationTypes ReadOperationType()
 {
     short OT; // Operation Type
 
     do 
     {
-        cout << Taps(2) << "Enter Operation Type [1] Add, [2] Sub, [3] Mul, [4] Div [5] Mix ? ";
+        cout << Taps(1) << "Enter Operation Type [1] Add, [2] Sub, [3] Mul, [4] Div [5] Mix ? ";
         cin >> OT;
     
     }
@@ -108,8 +100,6 @@ enOperationTypes ReadOperationType()
 
     return enOperationTypes(OT);
 }
-
-
 
 int GetNumberAccordingToDifficulty(enQuestionsLevel QuestionsLevel)
 {
@@ -135,60 +125,33 @@ int GetNumberAccordingToDifficulty(enQuestionsLevel QuestionsLevel)
             return GetRandomNumber(1, 120);
             break;
         }
-        default: // If The Default Happened Means There Is Wrong In The Input
+        default:
         {
-            return 0;
+            return GetRandomNumber(123, 1115);
             break;
         }
     }
 
 }
 
-
  char OperationCharacter(enOperationTypes OT)
  {
+    char Character [4] = {'+', '-', 'x', '/'};
 
-     switch (OT)
-     {
-         case enOperationTypes::Add:
-         {
-             return '+';
-             break;
-         }
-         case enOperationTypes::Sub:
-         {
-             return '-';
-             break;
-         }
-         case enOperationTypes::Mul:
-         {
-             return 'x';
-            break;
-         }
-         default: 
-         {
-             return '/';
-             break;
-         }
-
-     }
-
+    return Character[OT - 1];
 
  }
-
-
 
 void QuestionStyle(short NumberOne, short NumberTwo, char OPCharacter)
 {
 
-    cout << Taps(2) << NumberOne << endl;
-    cout << endl << Taps(2) << NumberTwo << " " << OPCharacter << endl;
-    cout << endl << Taps(2) << "---------------\n";
+    cout << Taps(1) << NumberOne << endl;
+    cout << endl << Taps(1) << NumberTwo << " " << OPCharacter << endl;
+    cout << endl << Taps(1) << "---------------\n";
     
 }
 
-
-float AnswerOfQuestion(short Num1, short Num2, enOperationTypes OT)
+float SimpleCalculator(short Num1, short Num2, enOperationTypes OT)
 {
 
     switch (OT)
@@ -214,15 +177,13 @@ float AnswerOfQuestion(short Num1, short Num2, enOperationTypes OT)
             break;
         }
         default:
-            return 0; // Wrong Input.
+            return Num1 + Num2;
 
     }
 
 }
 
-
-
-// This Function Is The Most Importent In App, This Will Make Answer And Solve The Answer And Compile The Right Answer And User Answer And Return Right Answer Or Wrong Answer Depend Of User Input 
+// This Function Is The Most Important Function In App,  
 enAnswerIs MakeQuestion(stQuestionInfo QInfo)
 {
     float RightAnswer = 0; 
@@ -237,30 +198,28 @@ enAnswerIs MakeQuestion(stQuestionInfo QInfo)
     QuestionStyle(QInfo.NumberOne, QInfo.NumberTwo, OperationCharacter(QInfo.OPType));
 
     // Take Answer From User.
-    cout << Taps(2);
+    cout << Taps(1);
     cin >> QInfo.Answer;
 
     // This Is The Right Answer.
-    RightAnswer = AnswerOfQuestion(QInfo.NumberOne, QInfo.NumberTwo, QInfo.OPType);
+    RightAnswer = SimpleCalculator(QInfo.NumberOne, QInfo.NumberTwo, QInfo.OPType);
 
 
     if(QInfo.Answer == RightAnswer)
     {
-        cout << endl << Taps(2) << "Right Answer :--) \n";
+        cout << endl << Taps(1) << "Right Answer :--) \n";
         return enAnswerIs::Right;
     }
     else
     {
-        cout << endl << Taps(2) << "Wrong Answer :--( \n";
-        cout << endl << Taps(2) << "The Right Answer Is " << RightAnswer << endl;
+        cout << endl << Taps(1) << "Wrong Answer :--( \n";
+        cout << endl << Taps(1) << "The Right Answer Is " << RightAnswer << endl;
 
         return enAnswerIs::Wrong;
     }
 
 
 }
-
-
 
 string NameOfLevels(enQuestionsLevel QL)
 {
@@ -269,14 +228,12 @@ string NameOfLevels(enQuestionsLevel QL)
     return LevelName[QL - 1];
 }
 
-
 string NameOfOperation(enOperationTypes OT)
 {
     string OperationNmaes[5] = {"Add", "Sub", "Mul", "Div", "Mix"};
 
     return OperationNmaes[OT - 1];
 }
-
 
 void FillFinalResult(stQuestionInfo QInfo, stFinalResult& FinalResult)
 {
@@ -289,16 +246,8 @@ void FillFinalResult(stQuestionInfo QInfo, stFinalResult& FinalResult)
 
 }
 
-
-
 stFinalResult PlayMathGame(short QuestionsNumber)
 {
-
-    /*
-        Q = Question.
-        OPType = Operation Type.
-
-    */
 
     stFinalResult FinalResult;
 
@@ -321,7 +270,7 @@ stFinalResult PlayMathGame(short QuestionsNumber)
         QInfo.NumberTwo = GetNumberAccordingToDifficulty(QInfo.QuestionLevel);
 
 
-        // Make Question And Take Answer From User And Solve The Quesition And Compile The Answers If The User Answer Same Like Computer Answer Return Right Answer, Otherwise Return Wrong Answer
+        // Make Question And Take Answer From User And Solve The Quesition And Compile The Answers, If The User Answer Same Like Computer Answer, Return Right Answer, Otherwise Return Wrong Answer
         if(MakeQuestion(QInfo) == enAnswerIs::Right)
         {
             QInfo.NumberOfRightAnswer++;
@@ -340,8 +289,6 @@ stFinalResult PlayMathGame(short QuestionsNumber)
 
 }
 
-
-
 string PassOrFail(short RightAnswers, short WrongAnswers)
 {
     if(RightAnswers > WrongAnswers)
@@ -358,41 +305,37 @@ string PassOrFail(short RightAnswers, short WrongAnswers)
     }
 }
 
-
 void PrintFinalResult(stFinalResult FinalResult)
 {
 
     cout << endl;
 
-    cout << endl << Taps(2) << "---------------------\n";
+    cout << endl << Taps(1) << "---------------------\n";
 
-    cout << Taps(2) << PassOrFail(FinalResult.NumberOfRightAnswer, FinalResult.NumberOfWrongAnswer) << endl;
+    cout << Taps(1) << PassOrFail(FinalResult.NumberOfRightAnswer, FinalResult.NumberOfWrongAnswer) << endl;
 
-    cout << Taps(2)  <<  "---------------------\n";
+    cout << Taps(1)  <<  "---------------------\n";
 
-    cout << Taps(2) << "Number Of Questions     : " << FinalResult.NumberOfQuestions << endl; 
-    cout << Taps(2) << "Questions Level         : " << FinalResult.QuestionLevel << endl;
-    cout << Taps(2) << "OP Type                 : " << FinalResult.OPType << endl;
-    cout << Taps(2) << "Number Of Write Answer  : " << FinalResult.NumberOfRightAnswer << endl;
-    cout << Taps(2) << "Number Of Wrong Answer  : " << FinalResult.NumberOfWrongAnswer << endl;
-    cout << Taps(2) << "---------------------\n";
+    cout << Taps(1) << "Number Of Questions     : " << FinalResult.NumberOfQuestions << endl; 
+    cout << Taps(1) << "Questions Level         : " << FinalResult.QuestionLevel << endl;
+    cout << Taps(1) << "OP Type                 : " << FinalResult.OPType << endl;
+    cout << Taps(1) << "Number Of Right Answer  : " << FinalResult.NumberOfRightAnswer << endl;
+    cout << Taps(1) << "Number Of Wrong Answer  : " << FinalResult.NumberOfWrongAnswer << endl;
+    cout << Taps(1) << "---------------------\n";
 
 
 }
-
-
 
 bool PlayAgain()
 {
     char Choice = 'Y';
 
-    cout << Taps(2)<< "Do You Want Play Again Y/N ";
+    cout << Taps(1)<< "Do You Want Play Again Y/N ";
     cin >> Choice;
 
 
     return (Choice == 'Y') || (Choice == 'y');
 }
-
 
 void StartGame()
 {

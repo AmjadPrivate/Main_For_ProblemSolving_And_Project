@@ -93,7 +93,6 @@ enWinner HowWonTheRound(stRoundInfo RoundInfo)
     return enWinner::Player1;
 }
 
-
 enWinner HowWonTheGame(short Player1WinTimes, short ComputerWinTimes)
 {
 
@@ -105,7 +104,6 @@ enWinner HowWonTheGame(short Player1WinTimes, short ComputerWinTimes)
         return enWinner::Draw;
 
 }
-
 
 stGameResults FillGameResults(short GameRounds, short Player1WinTimes, short ComputerWinTimes, short DrawTimes)
 {
@@ -153,14 +151,13 @@ enGameChoice ReadPlayer1Choice()
     }
     while (Choice < 1 || Choice > 3);
 
-    return (enGameChoice) Choice;
+    return (enGameChoice) Choice; // Casting
 }
 
 enGameChoice GetComputerChoice()
 {
     return (enGameChoice)RandomNumber(1, 3);
 }
-
 
 stGameResults PlayGame(short HowMayRounds)
 {
@@ -208,7 +205,6 @@ stGameResults PlayGame(short HowMayRounds)
 
 }
 
-
 string Taps(short NumberOfTaps)
 {
     string t ="";
@@ -231,7 +227,6 @@ void ShowGameOverScreen()
     cout << Taps(2) << "--------------------------------------------\n\n";
 
 }
-
 
 void ShowFinalGameResult(stGameResults GameResults)
 {

@@ -5,10 +5,8 @@ using namespace std;
 
 enum enUsersInput {Stone = 1, Paper = 2, Scissors =3};
 
-
 // For Final Winer
-enum enHowIsWon {Player1 = 1, Computer =2, NoWinner = 3};
-
+enum enHowIsWon {Player1 = 1, Computer =2, Draw = 3};
 
 struct stGameResults
 {
@@ -19,7 +17,6 @@ struct stGameResults
     enHowIsWon FinalWiner;
 
 };
-
 
 void ReadNumberInRange(short From, short To, short& Number, string Message)
 {
@@ -35,7 +32,6 @@ void ReadNumberInRange(short From, short To, short& Number, string Message)
 
 
 }
-
 
 // Computer Input 
 enUsersInput ComputerInputs()
@@ -53,67 +49,106 @@ enUsersInput PlayerOneInputs()
     return enUsersInput(Answer);
 }
 
-
 // This Function Gives Me The Winner.
-enHowIsWon HowIsWon(enUsersInput PlayerOneInput, enUsersInput ComputerInput)
+enHowIsWon HowWonTheRound(enUsersInput PlayerOneInput, enUsersInput ComputerInput)
 {
 
-    // The Proceses Will Be Here
 
     if(PlayerOneInput ==  ComputerInput)
     {
-        return enHowIsWon::NoWinner;
+        return enHowIsWon::Draw;
     }
-    else 
+
+    // In Case Computer Win's Only
+    switch (PlayerOneInput)
     {
-         
-        if(PlayerOneInput == enUsersInput::Stone && ComputerInput == enUsersInput::Paper) 
+        case enUsersInput::Stone:
         {
-
-            return enHowIsWon::Computer;
-        
+            if (ComputerInput == enUsersInput::Paper)
+            {
+                return enHowIsWon::Computer;
+            }
+            break;
         }
-        else if(PlayerOneInput == enUsersInput::Stone && ComputerInput == enUsersInput::Scissors)
+        case enUsersInput::Paper:
         {
-
-            return enHowIsWon::Player1;
-
+            if (ComputerInput == enUsersInput::Scissors)
+            {
+                return enHowIsWon::Computer;
+            }
+            break;
         }
-        else if(PlayerOneInput == enUsersInput::Paper && ComputerInput == enUsersInput::Stone)
+        case enUsersInput::Scissors:
         {
-
-            return enHowIsWon::Player1;
-
-        } 
-        else if(PlayerOneInput == enUsersInput::Paper && ComputerInput == enUsersInput::Scissors) 
-        {
-
-            return enHowIsWon::Computer;
-        
-        }
-        else if(PlayerOneInput == enUsersInput::Scissors && ComputerInput == enUsersInput::Stone) 
-        {
-
-            return enHowIsWon::Computer;
-        
-        }
-        else if(PlayerOneInput == enUsersInput::Scissors && ComputerInput == enUsersInput::Paper) 
-        {
-
-            return enHowIsWon::Player1;
-        
-        }
-        else 
-        {
-            return enHowIsWon::NoWinner;
+            if (ComputerInput == enUsersInput::Stone)
+            {
+                return enHowIsWon::Computer;
+            }
+            break;
         }
 
 
     }
+
+    // If Reach Here Than Player1 Is The Winner.
+    return enHowIsWon::Player1;
+
+
+
+
+
+
+    // This Is My Solution "Like A Shit :) ";
+
+    // else 
+    // {
+         
+    //     if(PlayerOneInput == enUsersInput::Stone && ComputerInput == enUsersInput::Paper) 
+    //     {
+
+    //         return enHowIsWon::Computer;
+        
+    //     }
+    //     else if(PlayerOneInput == enUsersInput::Stone && ComputerInput == enUsersInput::Scissors)
+    //     {
+
+    //         return enHowIsWon::Player1;
+
+    //     }
+    //     else if(PlayerOneInput == enUsersInput::Paper && ComputerInput == enUsersInput::Stone)
+    //     {
+
+    //         return enHowIsWon::Player1;
+
+    //     } 
+    //     else if(PlayerOneInput == enUsersInput::Paper && ComputerInput == enUsersInput::Scissors) 
+    //     {
+
+    //         return enHowIsWon::Computer;
+        
+    //     }
+    //     else if(PlayerOneInput == enUsersInput::Scissors && ComputerInput == enUsersInput::Stone) 
+    //     {
+
+    //         return enHowIsWon::Computer;
+        
+    //     }
+    //     else if(PlayerOneInput == enUsersInput::Scissors && ComputerInput == enUsersInput::Paper) 
+    //     {
+
+    //         return enHowIsWon::Player1;
+        
+    //     }
+    //     else 
+    //     {
+    //         return enHowIsWon::Draw;
+    //     }
+
+
+    // }
 
 
 }
-
 
 string ConvertEnumToString_UsersInputs(enUsersInput UserInput)
 {
@@ -171,7 +206,6 @@ string ConvertEnumToString_HowIsWinner(enHowIsWon Winner)
 
 }
 
-
 void RoundResult(int RoundNumber, enUsersInput PlayerInput, enUsersInput ComputerInput ,enHowIsWon Winner)
 {
 
@@ -184,13 +218,12 @@ void RoundResult(int RoundNumber, enUsersInput PlayerInput, enUsersInput Compute
     cout << "\n-----------------------------------------\n" << endl;
 }
 
-
 // Get The Final Winner
 enHowIsWon GetTheFinalWinner(short ComputerPoints, short PlayerPoints)
 {
     if(ComputerPoints == PlayerPoints)
     {
-        return enHowIsWon::NoWinner;
+        return enHowIsWon::Draw;
     }
     else 
     {
@@ -207,14 +240,13 @@ enHowIsWon GetTheFinalWinner(short ComputerPoints, short PlayerPoints)
 
 }
 
-
 void RestGameResult(stGameResults& GameResults)
 {
     GameResults.Game_Rounds = 0;
     GameResults.Computer_Points = 0;
     GameResults.Player_Points = 0;
     GameResults.Draw_Points = 0;
-    GameResults.FinalWiner = enHowIsWon::NoWinner;
+    GameResults.FinalWiner = enHowIsWon::Draw;
 
 }
 
@@ -242,7 +274,6 @@ void TheFinalResult(stGameResults& GameResults)
 
 }
 
-
 bool PlayAgain()
 {
     char PlayAgain;
@@ -256,12 +287,10 @@ bool PlayAgain()
     }
     else
     {
-        return false;
+        return false; // Otherwise Mean No 
     }
 
 }
-
-
 
 void StartTheGame()
 {
@@ -273,9 +302,12 @@ void StartTheGame()
 
     do 
     {
+        RestGameResult(GameResults);
+
         // This Function Read How Many Round Do You Want To Play 
         ReadNumberInRange(1 , 10 ,GameResults.Game_Rounds, "How Many Rounds Do You Want To Play? ");
     
+
         for(int i = 1; i <= GameResults.Game_Rounds; i++)
         {
 
@@ -285,7 +317,7 @@ void StartTheGame()
             PlayerOneInput = PlayerOneInputs();
             ComputerInput = ComputerInputs();
 
-            enHowIsWon Winner = HowIsWon(PlayerOneInput, ComputerInput);
+            enHowIsWon Winner = HowWonTheRound(PlayerOneInput, ComputerInput);
 
             if(Winner == enHowIsWon::Player1)
             {
@@ -319,8 +351,6 @@ void StartTheGame()
     
 
 }
-
-
 
 int main()
 {   
