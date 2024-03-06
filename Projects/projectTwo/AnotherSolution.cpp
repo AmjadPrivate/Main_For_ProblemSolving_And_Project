@@ -10,6 +10,15 @@ enum enOperationType {Add = 1, Sub = 2, Mul = 3, Div = 4, MixOp = 5};
 
 struct stQuestions
 {
+    /*
+    
+        // The Question Have Some Elements (Number One ) == Fill Number One With Random Number and Number Tow Also.
+        // Then, The App Will Read Operation Type And Question Level From User.
+        // Then, App Will Sovle The Question 
+        // Then, App Will Read The User Answer. 
+
+    
+    */
     int NumberOne = 0;
     int NumberTwo = 0;
     enOperationType OperationType;
@@ -182,14 +191,13 @@ stQuestions GenerateQuestion(enQuestionsLevel QuestionLevel, enOperationType OpT
 
 void GenerateQuizzQuestions(stQuiz& Quizz)
 {
-
+    
     for(short Question = 0; Question < Quizz.NumberOfQuestion; Question++)
     {
         
         Quizz.QuestionsList[Question] = GenerateQuestion(Quizz.QuestionsLevel, Quizz.OpType);
 
     }
-
 
 }
 
@@ -248,7 +256,7 @@ void CorrectTheQuestionAnswer(stQuiz& Quizz, short QuesitonsNumber)
 }
 
 void AskAndCoorectQuestionListAnswer(stQuiz& Quizz)
-{
+{       
 
     for(short QuesitonsNumber = 0; QuesitonsNumber < Quizz.NumberOfQuestion; QuesitonsNumber++)
     {
