@@ -1,0 +1,3 @@
+/home/amjada/ProgrammingSpace/C++LevelTwo/build/CMakeFiles/LibraryLesson.dir
+/home/amjada/ProgrammingSpace/C++LevelTwo/build/CMakeFiles/edit_cache.dir
+/home/amjada/ProgrammingSpace/C++LevelTwo/build/CMakeFiles/rebuild_cache.dir

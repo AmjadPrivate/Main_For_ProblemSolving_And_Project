@@ -1,0 +1,1 @@
+/usr/bin/g++ -g CMakeFiles/LibraryLesson.dir/main.cpp.o -o LibraryLesson 
