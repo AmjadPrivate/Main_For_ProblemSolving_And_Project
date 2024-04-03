@@ -1,8 +1,0 @@
-[
-{
-  "directory": "/home/amjada/ProgrammingSpace/C++LevelTwo/build",
-  "command": "/usr/bin/g++   -g -o CMakeFiles/LibraryLesson.dir/main.cpp.o -c /home/amjada/ProgrammingSpace/C++LevelTwo/LibraryLesson/main.cpp",
-  "file": "/home/amjada/ProgrammingSpace/C++LevelTwo/LibraryLesson/main.cpp",
-  "output": "CMakeFiles/LibraryLesson.dir/main.cpp.o"
-}
-]
