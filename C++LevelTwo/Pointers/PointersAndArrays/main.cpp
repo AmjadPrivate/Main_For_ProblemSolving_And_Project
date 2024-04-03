@@ -6,48 +6,26 @@ using namespace std;
 int main()
 {
 
-    int arr[4] = {10, 20, 30, 40};
+    int arr[5] = {10, 20, 30, 40, 50};
 
-    int *prt;
-    prt = arr;
-
-    // prt Is Equivalent to &arr[0];
-    // prt + 1 Is Equivalent to &arr[1];
-    // prt + 2 Is Equivalent to &arr[2];
-    // prt + 3 Is Equivalent to &arr[3];
+    int * ptr = arr;
 
 
-    cout << "Addresses Are: \n" <<  endl;
 
-    cout << prt << endl;
-    cout << prt + 1<< endl;
-    cout << prt + 2<< endl;
-    cout << prt + 3<< endl;
+    cout << "\nThe Addresses of array elements:" << endl;
+    for(int i = 0; i < 5; i++)
+    {
+        cout << (ptr + i) << endl;
+    }
+
+    cout << endl;
     
-    cout << "\nValues Are: " << endl;
-
-
-    cout << *(prt) << endl;
-    cout << *(prt + 1) << endl;
-    cout << *(prt + 2) << endl;
-    cout << *(prt + 3) << endl;
-
-    // cout << "Addresses Are: \n" <<  endl;
-
-    // for(int i = 0; i <= 3; i++)
-    // {
-    //     cout << prt + i << endl;
-    // }
-
-
-    // cout << "\nValues Are: " << endl;
-
-    // for(int i = 0; i <= 3; i++)
-    // {
-    //     cout << *( prt + i) << endl;
-    // }
-
-
+    cout << "\nThe values of array elements :" << endl;
+    
+    for(int i = 0; i < 7; i++)
+    {
+        cout << *(ptr + i) << endl;
+    }
 
     return 0;
 }

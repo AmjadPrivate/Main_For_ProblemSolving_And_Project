@@ -5,16 +5,19 @@
 using namespace std;
 
 
-
-void Swap(int *a, int *b)
+void SwapTwoNumbers(int *num_one, int *num_two) // Cereating two pointers 
 {
     int temp = 0;
 
-    temp = *a;
-    *a = *b;
-    *b = temp;
+    temp = *num_one;
+
+    *num_one = *num_two;
+
+    *num_two =  temp;
+
 
 }
+
 
 int main()
 {
@@ -25,8 +28,7 @@ int main()
     cout << "A == " << a << endl;
     cout << "B == " << b << endl;
 
-    Swap(&a, &b);
-    
+    SwapTwoNumbers(&a, &b);
 
     cout << "Variables Value After Swaping: " << endl;
     cout << "A == " << a << endl;

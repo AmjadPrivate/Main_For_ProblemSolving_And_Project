@@ -4,40 +4,36 @@ using namespace std;
 
 struct stEmployee 
 {
-
-    string FristName = "";
-    string LastName = "";
-    short Age = 0;
+    string Nmae = "";
     float Salary = 0;
-    string DomainName = "";
-    bool MarreidStatus = 0;
-    string ID = "";
-    char Gender = 'F';
-
 };
+
 
 
 
 int main()
 {
 
-    stEmployee Employee, *prt;
+    stEmployee Employee1, *ptr;
 
-    Employee.FristName = "Amjad";
-    Employee.LastName = "Al-Sayed";
 
-    cout << Employee.FristName << endl;
-    cout << Employee.LastName << endl;
+    Employee1.Nmae = "Amjad Al-Sayed";
+    Employee1.Salary = 100000.5;
 
-    prt = &Employee;
+    cout << endl;
+    cout << "Employee Name "<< Employee1.Nmae << " Before Chenging" << endl;
+    cout << "Employee Salary  "<< Employee1.Salary << " Before Chenging" << endl;
 
-    prt->Age = 12;
+    ptr = &Employee1;
 
-    cout << "Print Strcture With Pointer : " << endl;   
-    cout << prt->FristName << endl;
-    cout << prt->LastName << endl;
-    cout << prt->Age << endl;
 
+    cout << endl;
+    ptr->Nmae = "Amjad AlSayed";
+    ptr->Salary = 200000.7;
+
+
+    cout << "Employee Name "<< Employee1.Nmae << " After Chenging" << endl;
+    cout << "Employee Salary  "<< Employee1.Salary << " After Chenging" << endl;
 
 
     return 0;
